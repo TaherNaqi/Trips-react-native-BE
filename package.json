@@ -1,0 +1,24 @@
+{
+  "name": "Trips-react-native-BE",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TaherNaqi/Trips-react-native-BE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TaherNaqi/Trips-react-native-BE/issues"
+  },
+  "homepage": "https://github.com/TaherNaqi/Trips-react-native-BE#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
