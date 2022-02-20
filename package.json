@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/TaherNaqi/Trips-react-native-BE#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.2",
+    "mongoose-slug-plugin": "^2.1.0"
   }
 }
