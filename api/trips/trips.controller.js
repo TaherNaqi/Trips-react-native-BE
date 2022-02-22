@@ -10,7 +10,7 @@ exports.fetchTrip = async (tripId, next) => {
 };
 exports.getTrips = async (req, res, next) => {
   try {
-    const trips = await Trip.find();
+    const trips = await Trip.find().populate("owner");
     return res.json(trips);
   } catch (error) {
     next(error);
