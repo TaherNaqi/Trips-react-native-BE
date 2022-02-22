@@ -1,5 +1,3 @@
-const res = require("express/lib/response");
-const { findByIdAndDelete } = require("../../models/Trip");
 const Trip = require("../../models/Trip");
 
 exports.fetchTrip = async (tripId, next) => {
@@ -18,20 +16,7 @@ exports.getTrips = async (req, res, next) => {
     next(error);
   }
 };
-exports.createTrip = async (req, res, next) => {
-  try {
-    console.log(req.file);
-    if (req.file) {
-      req.body.image = `/${req.file.path}`;
-      req.body.image = req.body.image.replace("\\", "/");
-    }
-    // req.body.owner = { id: req.user._id, username: req.user.username };
-    const newTrip = await Trip.create(req.body);
-    res.status(201).json(newTrip);
-  } catch (error) {
-    next(error);
-  }
-};
+
 exports.updateTrip = async (req, res, next) => {
   try {
     // if (!req.user._id.equals(req.trip.owner._id)) {

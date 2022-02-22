@@ -13,7 +13,7 @@ router.post(
 );
 router.post(
   "/signin",
-  passport.authenticate("local", { failureRedirect: "signin" }),
+  passport.authenticate("local", { session: false }),
 
   signin
 );

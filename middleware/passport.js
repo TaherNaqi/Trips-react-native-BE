@@ -1,6 +1,6 @@
 //call libraries:
-const JWTStrategy = require("passport-jwt").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
+const JWTStrategy = require("passport-jwt").Strategy;
 const { fromAuthHeaderAsBearerToken } = require("passport-jwt").ExtractJwt;
 const bcrypt = require("bcrypt");
 //call models and files:
@@ -30,11 +30,11 @@ exports.jwtStrtegy = new JWTStrategy(
   async (jwtPayload, done) => {
     if (Date.now() > jwtPayload.exp) done(null, false);
     try {
-      const user = await User.findOne({ _id: jwtPayload.id });
+      const user = await User.findById(jwtPayload._id);
       if (user) done(null, user);
       else done(null, false);
     } catch (error) {
-      done(error);
+      done(null, false);
     }
   }
 );
