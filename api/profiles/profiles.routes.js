@@ -6,6 +6,7 @@ const {
   createTrip,
   getProfiles,
   fetchProfile,
+  updateProfile,
 } = require("./profiles.controllers");
 
 // router.get("/", fetchProfile);
@@ -15,5 +16,11 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   upload.single("image"),
   createTrip
+);
+router.put(
+  "/",
+  passport.authenticate("jwt", { session: false }),
+  upload.single("image"),
+  updateProfile
 );
 module.exports = router;

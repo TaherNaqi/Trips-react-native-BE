@@ -44,3 +44,20 @@ exports.createTrip = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.updateProfile = async (req, res, next) => {
+  try {
+    if (req.file) {
+      req.body.image = `/${req.file.path}`;
+    }
+    console.log(req.user._id);
+    const profile = await Profile.findOneAndUpdate(
+      { owner: req.user._id },
+      req.body,
+      { new: true, runValidators: true }
+    );
+    return res.status(200).json(profile);
+  } catch (error) {
+    next(error);
+  }
+};
