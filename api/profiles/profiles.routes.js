@@ -12,7 +12,7 @@ const {
 // router.get("/", fetchProfile);
 router.get("/", getProfiles);
 router.post(
-  "/:profileId",
+  "/",
   passport.authenticate("jwt", { session: false }),
   upload.single("image"),
   createTrip

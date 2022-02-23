@@ -10,10 +10,12 @@ exports.fetchProfile = async (profileId, next) => {
 };
 exports.getProfiles = async (req, res, next) => {
   try {
-    const profiles = await Profile.find().populate({
-      path: "trips",
-      populate: { path: "owner" },
-    });
+    const profiles = await Profile.find()
+      .populate({
+        path: "trips",
+        populate: { path: "owner" },
+      })
+      .populate("owner");
     return res.json(profiles);
   } catch (error) {
     next(error);
@@ -33,10 +35,11 @@ exports.createTrip = async (req, res, next) => {
       req.body.image = req.body.image.replace("\\", "/");
     }
     req.body.owner = { _id: req.user._id, username: req.user.username };
-    console.log(req.body.owner);
+
     const newTrip = await Trip.create(req.body);
+    newTrip.populate("owner");
     await Profile.findOneAndUpdate(
-      { _id: req.params.profileId },
+      { owner: req.user._id },
       { $push: { trips: newTrip._id } }
     );
     res.status(201).json(newTrip);
