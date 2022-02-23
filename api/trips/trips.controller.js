@@ -29,7 +29,7 @@ exports.updateTrip = async (req, res, next) => {
       { _id: req.trip.id, owner: req.trip.owner },
       req.body,
       { new: true, runValidators: true }
-    );
+    ).populate("owner");
     res.status(201).json(trip);
   } catch (error) {
     next(error);
