@@ -59,6 +59,7 @@ exports.updateProfile = async (req, res, next) => {
       req.body,
       { new: true, runValidators: true }
     );
+    profile.populate("owner");
     return res.status(200).json(profile);
   } catch (error) {
     next(error);
